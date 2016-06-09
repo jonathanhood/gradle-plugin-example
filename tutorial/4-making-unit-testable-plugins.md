@@ -17,7 +17,7 @@ At the end of the day, a gradle task requires a project to run. Creating a proje
 
 Let's take the following task from our previous tutorial:
 
-```
+``` groovy
 package com.jhood
 
 import org.gradle.api.DefaultTask
@@ -41,7 +41,7 @@ The primary problem here is that the task extends ``DefaultTask`` which is hard 
 
 Let's create the following new class:
 
-```
+``` groovy
 package com.jhood.impl
 
 class FileCreator {
@@ -68,7 +68,7 @@ Let's take a minute to point out a few important things:
 
 Our task implementation now simplified to:
 
-```
+``` groovy
 package com.jhood
 
 import com.jhood.impl.FileCreator
@@ -96,7 +96,7 @@ This is really nice. It's not such a big deal now that we can't unit test the im
 
 Lets now test our ``FileCreator`` using a unit test bench.
 
-```
+``` groovy
 package impl
 
 import com.jhood.impl.FileCreator
