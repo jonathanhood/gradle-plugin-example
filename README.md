@@ -1,5 +1,12 @@
 # Gradle Plugin Example and Tutorial
 
+## The Tutorial
+
+1. [Your First Gradle Plugin](tutorial/1-your-first-gradle-plugin.md)
+2. [Your First Plugin Test](tutorial/2-your-first-plugin-test.md)
+3. [Declaring Tasks the Right Way](tutorial/3-declaring-tasks-the-right-way.md)
+4. [Making Unit Testable Plugins](4-making-unit-testable-plugins.md)
+
 ## What is a Gradle Plugin?
 
 Most fundamentally, a gradle plugin is library of code that, when loaded by Gradle build script, adds new functionality and capabilities to the build system.
@@ -36,10 +43,4 @@ Custom gradle plugins are useful to add functionality to the build system in gen
 - Plugins allow you to add new functionality to the build system. Custom packaging formats, new ways of running tests, etc. 
 
 In my workplace we use a gradle plugin to accomplish all of the above. Our project ``build.gradle`` files are typically only declare dependencies, but still enable a wide variety of functionality for code analysis, packaging, integration testing, and other items. This funcionality is shared among a great many projects.
-
-## The Tutorial
-
-1. [Your First Gradle Plugin](tutorial/1-your-first-gradle-plugin.md)
-2. [Your First Plugin Test](tutorial/2-your-first-plugin-test.md)
-3. [Declaring Tasks the Right Way](tutorial/3-declaring-tasks-the-right-way.md)
 

@@ -2,6 +2,7 @@
 
 - [Home](../README.md)
 - [Previous](2-your-first-plugin-test.md)
+- [Next](4-making-unit-testable-plugins.md)
 
 Implement tasks directly in our top-level plugin class can rapidly grow out of control. As you add tasks to the plugin, it becomes beneficial to declare your tasks in their own files. 
 
