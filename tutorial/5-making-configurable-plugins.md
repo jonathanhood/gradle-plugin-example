@@ -57,7 +57,7 @@ It should be noted that any ``@TaskAction`` handler occurs after evaluation is c
 
 Using an extension is pretty easy assuming we've followed the rules about project lifecycles. To state it again:
 
-- ** Do not read extension data unless you are in an ``afterEvaluate`` block or in a tasks ``@TaskAction`` handler. **
+- **Do not read extension data unless you are in an ``afterEvaluate`` block or in a tasks ``@TaskAction`` handler.**
 
 We can show this in action very simply:
 
