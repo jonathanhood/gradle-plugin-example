@@ -1,8 +1,9 @@
-# Making Unit Testable Plugins
+# 4: Making Unit Testable Plugins
 
 
 - [Home](../README.md)
 - [Previous](3-declaring-tasks-the-right-way.md)
+- [Next](5-making-configurable-plugins.md)
 
 At this point we've created plugins, added tasks, and created integration tests. We have a lot of tools already in our belt to built useful and tested plugins. There is a big problem though, as your plugin grows integration tests will take a long time. This can make it a pain to work in the plugin when its feature set grows. We can solve that problem by applying some heathly software practices to create decoupled and unit testable plugins.
 

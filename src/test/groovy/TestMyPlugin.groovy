@@ -1,3 +1,4 @@
+import com.jhood.MyPluginExtension
 import com.jhood.MyTask
 import org.gradle.api.Project
 import org.gradle.testfixtures.ProjectBuilder
@@ -25,5 +26,12 @@ class TestMyPlugin extends GroovyTestCase {
 
         assertTrue(project.tasks.myothertask instanceof MyTask)
         assertEquals(new File(project.buildDir, "otherfile.txt"), project.tasks.myothertask.outputFile)
+    }
+
+    void testHasExtension() {
+        Project project = ProjectBuilder.builder().withName("hello-world").build()
+        project.pluginManager.apply MyPlugin
+        assertTrue(project.extensions.myplugin instanceof MyPluginExtension)
+        assertEquals("¯\\_(ツ)_/¯", project.extensions.myplugin.fileContent)
     }
 }

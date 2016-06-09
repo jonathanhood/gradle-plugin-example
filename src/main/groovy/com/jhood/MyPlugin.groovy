@@ -6,6 +6,8 @@ import org.gradle.api.Project
 class MyPlugin implements Plugin<Project> {
     void apply(Project project) {
 
+		project.extensions.add("myplugin", MyPluginExtension)
+
 		// The quick-n-dirty way
 		project.task("dealwithit") {
 			println("(•_•) ( •_•)>⌐■-■ (⌐■_■)")
@@ -23,6 +25,10 @@ class MyPlugin implements Plugin<Project> {
 			description = "Create otherfile.txt in the build directory"
 
 			outputFile = new File(project.buildDir, "otherfile.txt")
+		}
+
+		project.afterEvaluate {
+			println(project.extensions.myplugin.fileContent)
 		}
     }
 }

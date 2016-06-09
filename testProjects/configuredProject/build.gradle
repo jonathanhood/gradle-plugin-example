@@ -1,0 +1,9 @@
+plugins {
+    id "myplugin"
+}
+
+myplugin {
+    fileContent = "CONFIGURED"
+}
+
+

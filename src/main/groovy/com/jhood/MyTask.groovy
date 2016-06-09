@@ -10,6 +10,6 @@ class MyTask extends DefaultTask {
     def action() {
         outputFile.parentFile.mkdirs()
         outputFile.createNewFile()
-        outputFile.text = "HELLO FROM MY PLUGIN"
+        outputFile.text = project.extensions.myplugin.fileContent
     }
 }
