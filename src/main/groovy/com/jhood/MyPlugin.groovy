@@ -13,8 +13,16 @@ class MyPlugin implements Plugin<Project> {
 
 		// The "right" way
 		project.task("mytask", type: MyTask) {
-			group = "My Plugin Tasks"
-			description = "Create a file in the build directory"
+			group = "MyPlugin"
+			description = "Create myfile.txt in the build directory"
+		}
+
+		// The "right" way with configuration
+		project.task("myothertask", type: MyTask) {
+			group = "MyPlugin"
+			description = "Create otherfile.txt in the build directory"
+
+			outputFile = new File(project.buildDir, "otherfile.txt")
 		}
     }
 }
