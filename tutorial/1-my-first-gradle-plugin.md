@@ -1,5 +1,8 @@
 # 1: My first Gradle plugin
 
+- [Home](../README.md)
+- [Next](2-your-first-plugin-test.md)
+
 Gradle plugins start simple. At their core, they are just a JAR file with some code and a properties file.  The contents of a simple plugin JAR file looks something like:
 
 ```

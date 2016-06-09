@@ -40,4 +40,5 @@ In my workplace we use a gradle plugin to accomplish all of the above. Our proje
 ## The Tutorial
 
 1. [My First Gradle Plugin](tutorial/1-my-first-gradle-plugin.md)
+2. [The First Plugin Test](tutorial/2-your-first-plugin-test.md)
 
