@@ -4,7 +4,6 @@ version = "${artifact_version}.${build_number}"
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
-
 repositories {
 	mavenCentral()
 }
