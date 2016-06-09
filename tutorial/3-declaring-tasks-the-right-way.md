@@ -10,6 +10,7 @@ In this tutorial we will cover:
 - How to define a task in its own file.
 - How to add the task to your project.
 - How to add categories and descriptions to your task.
+- How to add tests at the integration level for our new tasks.
 
 ## Declaring a Task
 
