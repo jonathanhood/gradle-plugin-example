@@ -3,7 +3,18 @@
 - [Home](../README.md)
 - [Next](2-your-first-plugin-test.md)
 
-Gradle plugins start simple. At their core, they are just a JAR file with some code and a properties file.  The contents of a simple plugin JAR file looks something like:
+
+
+Gradle plugins start simple. You can define some groovy code for the plugin, and add tasks to a given project. In this tutorial we'll cover:
+
+- How to create a simple plugin.
+- How to add a task to the project.
+- How to tell gradle about your plugin.
+- How to use your plugin in a project.
+
+## Basic Plugin Structure
+
+At their core, they are just a JAR file with some code and a properties file.  The contents of a simple plugin JAR file looks something like:
 
 ```
 .
@@ -16,6 +27,8 @@ Gradle plugins start simple. At their core, they are just a JAR file with some c
     └── MANIFEST.MF
 
 ```
+
+## Defining a Plugin Implementation
 
 The plugin code itself starts really simple. Just inherit from the ``Plugin<Project>`` and implement the ``apply`` method.
 
@@ -36,6 +49,8 @@ class MyPlugin implements Plugin<Project> {
 }
 ```
 
+## Telling Gradle How-To Load Your Plugin
+
 We must also tell Gradle that the ``MyPlugin`` class is a plugin applied with the ``myplugin`` name. You do that by editing the ``<pluginname>.properties `` file. 
 
 The example ``myplugin.properties`` file includes a simple declaration of the implementation class.
@@ -44,7 +59,10 @@ The example ``myplugin.properties`` file includes a simple declaration of the im
 implementation-class=com.jhood.MyPlugin
 ```
 
-Pretty simple right? You can publish this plugin to your local maven repository (using ``gradle install``, and use it in another example project with:
+
+## Using the Plugin in a Project
+
+You can publish this plugin to your local maven repository (using ``gradle install``, and use it in another example project with:
 
 ```groovy
 apply plugin: "myplugin"
@@ -74,5 +92,9 @@ BUILD SUCCESSFUL
 Total time: 0.503 secs
 ```
 
-That's it. With some very simple code, we now have a basic functioning plugin. From here, we'll talk about how to add more complex tasks and test the plugin itself.
+## Next Steps
 
+That's it. With some very simple code, we now have a basic functioning plugin. We've written a plugin implementation by inheriting from ``Plugin<Project>`` and used the plugin to implement the ``dealwithit`` task. We've also informed gradle of our plugin via the ``myplugin.properties`` file.
+
+In the next steps we will talk about how-to write a test for this simple plugin and its one task. Testing is one of the primary benefits to using Gradle plugins, and we'll repeatedly touch on this in future steps.
+ 

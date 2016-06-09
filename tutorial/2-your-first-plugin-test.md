@@ -1,7 +1,7 @@
 # 2: Your First Plugin Test
 
 - [Home](../README.md)
-- [Previous](1-my-first-gradle-plugin.md)
+- [Previous](1-your-first-gradle-plugin.md)
 
 Testing Gradle plugins is a task which must occur at multiple levels. Testing our simple plugin can only occur at the integration level today because of how its structured. 
 
