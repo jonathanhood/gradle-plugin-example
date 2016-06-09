@@ -1,4 +1,4 @@
-# 1: My first Gradle plugin
+# 1: Your first Gradle plugin
 
 - [Home](../README.md)
 - [Next](2-your-first-plugin-test.md)
