@@ -6,6 +6,7 @@
 2. [Your First Plugin Test](tutorial/2-your-first-plugin-test.md)
 3. [Declaring Tasks the Right Way](tutorial/3-declaring-tasks-the-right-way.md)
 4. [Making Unit Testable Plugins](tutorial/4-making-unit-testable-plugins.md)
+5. [Making Configurable Plugins](tutorial/5-making-configurable-plugins.md)
 
 ## What is a Gradle Plugin?
 

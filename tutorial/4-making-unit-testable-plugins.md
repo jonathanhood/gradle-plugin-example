@@ -5,7 +5,7 @@
 - [Previous](3-declaring-tasks-the-right-way.md)
 - [Next](5-making-configurable-plugins.md)
 
-At this point we've created plugins, added tasks, and created integration tests. We have a lot of tools already in our belt to built useful and tested plugins. There is a big problem though, as your plugin grows integration tests will take a long time. This can make it a pain to work in the plugin when its feature set grows. We can solve that problem by applying some heathly software practices to create decoupled and unit testable plugins.
+At this point we've created plugins, added tasks, and created integration tests. We have a learned some techniques already that allow us to build useful plugins. There is a big problem though, as your plugin grows integration tests will take a long time. This can make it painful to work in the plugin as its feature set grows. We can solve that problem by applying some heathly software practices to create decoupled and unit testable plugins.
 
 In this tutorial we will cover:
 
@@ -36,7 +36,7 @@ class MyTask extends DefaultTask {
 }
 ```
 
-The primary problem here is that the task extends ``DefaultTask`` which is hard to construct without a fully defined ``Project``. The implementation of the task only depends on one thing from gradle itself though - ``project.buildDir``. The solution then, is simple. We'll define the implementation of the task as a new class which doesn't depend on ``Project`` and then make the task use it via composition.
+The primary problem here is that the task extends ``DefaultTask`` which is hard to construct without a fully defined ``Project``. The implementation of the task only depends on one thing from gradle itself though - ``project.buildDir``. The solution then, is simple. We'll define the implementation of the task as a new class which doesn't depend on ``Project`` and then make the task construct and use the implementation.
 
 ## Creating a Task Implementation Class
 
@@ -89,9 +89,9 @@ class MyTestableTasik extends DefaultTask {
 When this happens, the job of the task class is just to:
 
 1. Expose configuration to the user where necessary.
-2. Define a ``TaskAction`` handler.
+2. Define a ``@TaskAction`` handler.
 
-This is really nice. It's not such a big deal now that we can't unit test the implementation of the task itself because its job is so simple.
+This is really nice. It's not such a big deal now that we can't unit test the implementation of the task itself because its job is very simple.
 
 ## Testing the ``FileCreator``
 

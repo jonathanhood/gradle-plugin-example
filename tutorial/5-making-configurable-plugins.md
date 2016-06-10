@@ -3,7 +3,7 @@
 - [Home](../README.md)
 - [Previous](4-making-unit-testable-plugins.md)
 
-So far we've built up some tools to create really nice plugins. We have a structure for defining tasks which supports testing. You can probably imagine how your existing ``build.gradle`` files might map to this world. When applying a plugin to a lot of projects though, inevitably something will ibe different between projects.  An artifact name will change, some behavior will need to be different, and a multitude of other things. Luckily Gradle provides an ``extensions`` infrastructure to support this configurability.
+When applying a plugin to a lot of projects, inevitably something will be different between projects.  An artifact name will change, some behavior will need to be different, and a multitude of other things. Luckily Gradle provides an ``extensions`` infrastructure to support this configurability.
 
 In this tutorial we will cover:
 
@@ -14,7 +14,7 @@ In this tutorial we will cover:
 
 ## Defining an Extension
 
-Extensions are simple groovy classes with default values. Their definition is as trivial as can be imagined.
+Extensions are simple groovy classes with default values. Their definition is very simple. They are just plain POGO classes.
 
 ```groovy
 package com.jhood
@@ -46,10 +46,10 @@ This should only be done once and must be done before project evaluation.
 Now you immediately ask: what is project evaluation? It might help to review Gradle's documentation on the [build lifecyle](https://docs.gradle.org/current/userguide/build_lifecycle.html) or the even better documentation as part of the [Project groovy docs](https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html).
 
 The simple way to state it is, projects have two fundamental times where we can manipulate them: 
-- ``beforeEvaluate`` occurs after all plugins have been loaded but before any configuration is read or dependencies evaluated. So far, most of the plugin code we've written will execute at this stage. At this point user configuration should not be read since it hasn't be pulled from the ``build.gradle`` yet.
+- ``beforeEvaluate`` occurs during initial plugin execution but before any configuration is read or dependencies evaluated. This is the time when most tasks will get constructed. So far, most of the plugin code we've written will execute at this stage. At this point user configuration should not be read since it hasn't be pulled from the ``build.gradle`` yet.
 - ``afterEvaluate`` occurs after all configuration and dependencies have been evaluated. At this point many parts of the project structure (such as configurations and dependencies) are rendered immutable. We may also read configuration with assurance that values are set as the user intends.
 
-After all ``afterEvaluate`` actions have been handled is when a gradle project actual begins to execute all tasks. After this point we can no longer manipulate the project in any meanginful way because it is running through the build procedure.
+After all ``afterEvaluate`` actions have been handled is when a gradle project actual begins to execute all tasks. 
 
 It should be noted that any ``@TaskAction`` handler occurs after evaluation is completed. As a result, reading configuration in these functions is acceptable.
 
@@ -59,7 +59,7 @@ Using an extension is pretty easy assuming we've followed the rules about projec
 
 - **Do not read extension data unless you are in an ``afterEvaluate`` block or in a tasks ``@TaskAction`` handler.**
 
-We can show this in action very simply:
+We can show this in action:
 
 ```groovy
 
@@ -124,11 +124,11 @@ myplugin {
 
 ```
 
-Doesn't get much simpler than that. If the ``myplugin`` block isn't placed in the ``build.gradle`` then the default values taken from the extension will be used.
+If the ``myplugin`` block isn't placed in the ``build.gradle`` then the default values taken from the extension will be used.
 
 ## Testing with the Extension
 
-The easiest test we can write involves asserting that hte extension is registered with correct default values.
+The easiest test we can write involves asserting that the extension is registered with correct default values.
 
 ```groovy
 import com.jhood.MyPluginExtension
@@ -196,4 +196,11 @@ class TestRealBuild extends GroovyTestCase {
 }
 ```
 
+## Next Steps
+
+In this tutorial we've shown how-to make our plugins configurable by using an extension. We can now write general purpose plugins whose behavior can be changed based on the need of the user.
+
+Hopefully by this point you've gotten a nice tour of the various gradle plugin mechanisms. There is way more you can do with plugins, I suggest referring to the [Gradle User Guide](https://docs.gradle.org/current/userguide/userguide) and [Gradle API Reference](https://docs.gradle.org/current/javadoc/) to get a feel for what you can do with your plugins. 
+
+You may also fork this project and use it as a starting point for new plugins. This project was used to build many of the examples in the tutorial, so you should find its code familiar.
 

@@ -81,4 +81,5 @@ This instructs our plugin project to create the ``plugin-claspath.txt`` file bef
 
 As you can see, integration testing of plugins isn't the easiest thing. That said, integration testing is necessary in many cases. Hopefully this tutorial gives you some tools for implementing these integration tests. 
 
-In the next steps we'll talk about how-to better write plugins to allow for unit testing of functionality. This allows us to get confidence in our plugin without resorting to integration tests in most cases.
+In the next step we'll present a better way to define tasks. This will allow us to build larger plugins that span multiple files.
+

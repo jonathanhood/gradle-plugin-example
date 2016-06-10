@@ -14,7 +14,7 @@ Gradle plugins start simple. You can define some groovy code for the plugin, and
 
 ## Basic Plugin Structure
 
-At their core, they are just a JAR file with some code and a properties file.  The contents of a simple plugin JAR file looks something like:
+At their core, a plugin is just a JAR file with some code and a properties file.  The contents of a simple plugin JAR file looks something like:
 
 ```
 .
@@ -62,7 +62,7 @@ implementation-class=com.jhood.MyPlugin
 
 ## Using the Plugin in a Project
 
-You can publish this plugin to your local maven repository (using ``gradle install``, and use it in another example project with:
+You can publish this plugin to your local maven repository (using ``gradle install``), and use it in another example project with:
 
 ```groovy
 apply plugin: "myplugin"
@@ -75,7 +75,6 @@ buildscript {
     classpath "com.jhood:myplugin:1.+"
   }
 }
-
 ```
 
 In the real world we'd want to use a real maven repository. For this tutorial we'll use the maven local repository to keep things simple.

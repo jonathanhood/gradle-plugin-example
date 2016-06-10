@@ -4,7 +4,7 @@
 - [Previous](2-your-first-plugin-test.md)
 - [Next](4-making-unit-testable-plugins.md)
 
-Implement tasks directly in our top-level plugin class can rapidly grow out of control. As you add tasks to the plugin, it becomes beneficial to declare your tasks in their own files. 
+Implementing tasks directly in our top-level plugin class can rapidly grow out of control. As you add tasks to the plugin, it becomes beneficial to declare your tasks in their own files. 
 
 In this tutorial we will cover:
 
@@ -17,7 +17,7 @@ In this tutorial we will cover:
 
 Declaring a task in your plugin as a seperate file is easy. You simply inherit from the ``DefaultTask`` class and implement an ``@TaskAction`` handler.
 
-We'll create a simple tasks which creates a file in the project every time it is run.
+We'll implement a simple task which creates a file in the project every time it is run.
 
 ```groovy
 package com.jhood
@@ -53,7 +53,7 @@ class MyPlugin implements Plugin<Project> {
 
 ## Making a Task Configurable
 
-Another benefit to declaring tasks this way is we can now make them configurable. For instance, we'll modify ``MyTask`` above to make the file path written configurable.
+Another benefit to declaring tasks this way is we can now make them configurable. For instance, we'll modify ``MyTask`` above to make the file path configurable.
 
 ```groovy
 package com.jhood
@@ -73,7 +73,7 @@ class MyTask extends DefaultTask {
 }
 ```
 
-Now we've made ``outputFile`` configurable at task creation time. We can use this in our ``MyPlugin`` definition to reuse a task multiple times with different outcomes.
+Now we just need to configure ``outputFile`` when we construct the task. We can use this in our ``MyPlugin`` definition to reuse a task multiple times with different outcomes.
 
 ```groovy
 package com.jhood
@@ -93,7 +93,7 @@ class MyPlugin implements Plugin<Project> {
 
 ## Adding Group and Description
 
-Adding group and descriptions to your tasks can help users understand how-to user your task by looking at the gradle help. Adding these items done in a similiar fashion to adding plugin configuration.
+Adding group and description statements to your tasks can help users understand how-to user your task. Adding these items done in a similiar fashion to adding plugin configuration.
 
 
 ```groovy 
@@ -156,7 +156,7 @@ mytask - Create myfile.txt in the build directory
 
 ## Testing that Tasks are Added Properly
 
-With this change we can start unit testing some functionality of hte plugin. We'll write a simple test which ensures that tasks are added properly to a project when a plugin is applied.
+With this change we can start unit testing some functionality of hte plugin. We'll write a test which ensures that tasks are added properly to a project by the plugin.
 
 ```groovy
 import com.jhood.MyTask
@@ -200,7 +200,7 @@ We'll test the implementation of each task seperately in other steps. For the pl
 
 ## Testing the Task Itself
 
-Unfortunately, testing tasks themselves is not such an easy task. We will investigate strategies for writing tasks to make it possible to unit test them. For now, we will test them using our previously built integration test infrastructure.
+Unfortunately, testing tasks themselves is not such an easy task. We will investigate strategies later which make it possible to unit test them. For now, we will test them using our previously built integration test infrastructure.
 
 ``` groovy
 import org.gradle.testkit.runner.GradleRunner
@@ -254,7 +254,7 @@ Otherwise, the new tests look very much the same as those added in the previous 
 
 ## Next Steps
 
-In this tutorial we have learned how to define tasks in a reusable way. We have also learned how to make tasks configurable. To aid in use of our plugin we learned how to add documentation to our tasks that user's can see. Finally, we learned how to add some simple tests for our next tasks.
+In this tutorial we have learned how to define tasks in a reusable way. We have also learned how to make tasks configurable. To aid in use of our plugin we learned how to add documentation to our tasks. Finally, we learned how to add some simple tests for our next tasks.
 
 In the next tutorial we will cover how-to split tasks in a way that allows unit testing of our plugin. This will make implementation of complex tasks easier to test.
 
